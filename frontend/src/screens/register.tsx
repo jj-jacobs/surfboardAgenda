@@ -7,12 +7,16 @@ const Register = () => {
   const navigate = useNavigate();
   const handleSubmit = (e: any) => {
     console.log("post");
-    Axios.post("http://localhost:8000/users/signUp", {
+    try {
+    const data: any = Axios.post("http://localhost:8000/users/signUp", {
       name: e.target.name.value,
       password: e.target.password.value,
     });
     navigate("/home");
-    alert("Goes to registration page");
+    }
+    catch(err){
+        console.log(err)
+    }
   };
 
   return (
@@ -30,7 +34,7 @@ const Register = () => {
           </div>
           <input type="submit" />
         </form>
-        <Link to="/login">Login</Link>
+        <Link to="/">Login</Link>
       </div>
     </div>
   );

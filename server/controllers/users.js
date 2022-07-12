@@ -27,6 +27,8 @@ module.exports = {
         try {
             req.body.password = await bcrypt.hash(req.body.password, 10)
             const user = await User.create(req.body)
+            req.session.name = req.body.name
+            console.log(req.session.name)
             res.json(user)
         }
         catch (err) {

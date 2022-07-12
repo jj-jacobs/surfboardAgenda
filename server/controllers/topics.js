@@ -15,7 +15,7 @@ module.exports = {
     editTopic: async (req, res) => {
         try{
             console.log('creating')
-            const topic = await Topic.create(req.body)
+            const topic = await Topic.findByIdAndUpdate(req.params.id, req.body)
             res.json(topic)
         }
         catch (err) {

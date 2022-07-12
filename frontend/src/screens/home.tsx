@@ -43,8 +43,8 @@ const Home = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
-    Axios.post("http://localhost:8000/topics/create", {
+  const handleSubmit = async (e: any) => {
+    await Axios.post("http://localhost:8000/topics/create", {
         title: formData.title,
         timeEstimate: formData.estimatedTime,
         description: formData.descrition
@@ -53,7 +53,6 @@ const Home = () => {
 
   return (
     <div>
-      Home
       <form className="form" onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="title">Title</label>
@@ -76,6 +75,7 @@ const Home = () => {
               {topic.title}
               <button onClick={() => editTopic(topic._id)}>edit</button>
               <button onClick={() => deleteTopic(topic._id)}>delete</button>
+              <hr />
             </li>
           ))}
         </ul>
