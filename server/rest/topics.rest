@@ -1,0 +1,36 @@
+POST http://localhost:8000/users/signUp
+Content-Type: application/json
+
+{
+    "name": "jejs",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:8000/topics/create
+Content-Type: application/json
+
+{
+    "title": "jejasdfs topic",
+    "timeEstimate": "2asdf hours",
+    "description": "jasdgsaej"
+}
+
+###
+
+POST http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "name": "jejs",
+    "password": "123456"
+}
+
+###
+
+GET http://localhost:8000/users
+Content-Type: application/json
+
+{
+}
