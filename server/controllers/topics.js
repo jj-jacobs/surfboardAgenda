@@ -26,7 +26,7 @@ module.exports = {
     getOneTopic: async (req, res) => {
         try{
             console.log('creating')
-            const topic = await Topic.create(req.body)
+            const topic = await Topic.findById(req.params.id)
             res.json(topic)
         }
         catch (err) {

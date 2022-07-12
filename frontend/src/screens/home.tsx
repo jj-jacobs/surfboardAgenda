@@ -11,17 +11,21 @@ const Home = () => {
     descrition: ""
   })
   const navigate = useNavigate();
+
   const showTopics = async () => {
     try {
       const topics: any = await Axios.get("http://localhost:8000/topics");
+      console.log(topics.data)
       setTopics(topics.data);
     } catch (err) {
       console.log(err);
     }
   };
+
   useEffect(() => {
     showTopics();
   }, []);
+
   const editTopic = async (id: string) => {
     try {
       await Axios.put(`http://localhost:8000/topics/${id}`, {
@@ -36,7 +40,7 @@ const Home = () => {
 
   const deleteTopic = async (id: string) => {
     try {
-      const topic: string = await Axios.delete(`http://localhost:8000/topics/${id}`
+      await Axios.delete(`http://localhost:8000/topics/${id}`
       );
     } catch (err) {
       console.log(err);
@@ -72,7 +76,12 @@ const Home = () => {
         <ul>
           {topics.map((topic) => (
             <li key={topic._id}>
-              {topic.title}
+              Title: {[topic.title, " "]} 
+              <br />
+              Description: {[topic.description, " "]} 
+              <br />
+              Time Estimate: {[topic.timeEstimate, " "]} 
+              <br />
               <button onClick={() => editTopic(topic._id)}>edit</button>
               <button onClick={() => deleteTopic(topic._id)}>delete</button>
               <hr />
