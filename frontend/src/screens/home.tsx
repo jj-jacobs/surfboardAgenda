@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     showTopics();
   }, []);
-  const editTopic = async (id: any) => {
+  const editTopic = async (id: string) => {
     try {
       await Axios.put(`http://localhost:8000/topics/${id}`, {
         title: "newTitle",
@@ -34,9 +34,9 @@ const Home = () => {
     }
   };
 
-  const deleteTopic = async (id: any) => {
+  const deleteTopic = async (id: string) => {
     try {
-      const topic: any = await Axios.delete(`http://localhost:8000/topics/${id}`
+      const topic: string = await Axios.delete(`http://localhost:8000/topics/${id}`
       );
     } catch (err) {
       console.log(err);
